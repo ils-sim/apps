@@ -65,6 +65,8 @@
       <Link>HS\csharp_out\Vehicle.cs</Link>
     </Compile>
     <Compile Include="HS\TCPClient.cs" />
+    <Compile Include="API\EmergencyFactory.cs" />
+    <Compile Include="API\UserFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

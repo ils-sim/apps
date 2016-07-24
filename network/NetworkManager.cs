@@ -16,7 +16,7 @@
 * 
 *********************************************************************************************/
 using System;
-using models;
+using System.Collections.Generic;
 
 namespace network
 {
@@ -29,34 +29,34 @@ namespace network
 			client.onPackageReceive += new TCPClient.ReceivePacketEventHandler(PackageReceive);
 		}
 
-		//public delegate void CallAcceptedEventHandler(CallAccept package);
-		//public event CallAcceptedEventHandler onCallAccepted;
+		public delegate void CallAcceptedEventHandler(models.Emergency emerg, models.User user);
+		public event CallAcceptedEventHandler onCallAccepted;
 
-		public delegate void CaseEndEventHandler(Emergency emerg);
+		public delegate void CaseEndEventHandler(models.Emergency emerg);
 		public event CaseEndEventHandler onCaseEnd;
 
-		public delegate void CaseNewEventHandler(Emergency emerg);
+		public delegate void CaseNewEventHandler(models.Emergency emerg);
 		public event CaseNewEventHandler onCaseNew;
 
-		public delegate void CaseUpdateEventHandler(Emergency emerg);
+		public delegate void CaseUpdateEventHandler(models.Emergency emerg);
 		public event CaseUpdateEventHandler onCaseUpdate;
 
-		public delegate void EmergEndEventHandler(Emergency emerg);
+		public delegate void EmergEndEventHandler(models.Emergency emerg);
 		public event EmergEndEventHandler onEmergEnd;
 
-		public delegate void EmergNewEventHandler(Emergency emerg);
+		public delegate void EmergNewEventHandler(models.Emergency emerg);
 		public event EmergNewEventHandler onEmergNew;
 
-		public delegate void EmergUpdateEventHandler(Emergency emerg);
+		public delegate void EmergUpdateEventHandler(models.Emergency emerg);
 		public event EmergUpdateEventHandler onEmergUpdate;
 
-		public delegate void MsgChatEventHandler(User sender, String message);
+		public delegate void MsgChatEventHandler(models.User sender, String message);
 		public event MsgChatEventHandler onMsgChat;
 
-		public delegate void MsgPrivateEventHandler(User sender, String message);
+		public delegate void MsgPrivateEventHandler(models.User sender, String message);
 		public event MsgPrivateEventHandler onMsgPrivate;
 
-		public delegate void MsgWallEventHandler(User sender, String message);
+		public delegate void MsgWallEventHandler(models.User sender, String message);
 		public event MsgWallEventHandler onMsgWall;
 
 		public delegate void QuitEventHandler();
@@ -65,25 +65,25 @@ namespace network
 		public delegate void ServerWallEventHandler(String message);
 		public event ServerWallEventHandler onServerWall;
 
-		//public delegate void UserListAnswerEventHandler(UserListAnswer package);
-		//public event UserListAnswerEventHandler onUserListAnswer;
+		public delegate void UserListAnswerEventHandler(List<models.User> users);
+		public event UserListAnswerEventHandler onUserListAnswer;
 
 		public delegate void UserLoginAnswerEventHandler(bool loginwasok);
 		public event UserLoginAnswerEventHandler onUserLoginAnswer;
 
-		public delegate void VehicleAlarmEventHandler(Car car);
+		public delegate void VehicleAlarmEventHandler(models.Car car);
 		public event VehicleAlarmEventHandler onVehicleAlarm;
 
-		public delegate void VehicleMsgEventHandler(Car car, String message);
+		public delegate void VehicleMsgEventHandler(models.Car car, String message);
 		public event VehicleMsgEventHandler onVehicleMsg;
 
-		public delegate void VehiclePositionEventHandler(Car car, CarPosition position);
+		public delegate void VehiclePositionEventHandler(models.Car car, models.CarPosition position);
 		public event VehiclePositionEventHandler onVehiclePosition;
 
-		public delegate void VehicleStornoEventHandler(Car car);
+		public delegate void VehicleStornoEventHandler(models.Car car);
 		public event VehicleStornoEventHandler onVehicleStorno;
 
-		public delegate void VehicleUpdateEventHandler(Car car);
+		public delegate void VehicleUpdateEventHandler(models.Car car);
 		public event VehicleUpdateEventHandler onVehicleUpdate;
 
 		private void PackageReceive(Protocol package)
@@ -91,45 +91,47 @@ namespace network
 			Console.WriteLine(package.ToString());
 			switch(package.Type)
 			{
-			/*case Protocol.Types.Type.CallAccepted:
+			case Protocol.Types.Type.CallAccepted:
 				if(onCallAccepted != null)
-					onCallAccepted(package.CallAccepted);
-				break;*/
+					onCallAccepted(
+						EmergencyFactory.Get(package.CallAccepted.IdEmerg),
+						UserFactory.Get(package.CallAccepted.IdReciever));
+				break;
 			case Protocol.Types.Type.CaseEnd:
 				if(onCaseEnd != null)
-					onCaseEnd(package.CaseEnd);
+					onCaseEnd(EmergencyFactory.Get(package.CaseEnd.IdCase));
 				break;
 			case Protocol.Types.Type.CaseNew:
 				if(onCaseNew != null)
-					onCaseNew(package.CaseNew);
+					onCaseNew(EmergencyFactory.Get(package.CaseNew.IdCase));
 				break;
 			case Protocol.Types.Type.CaseUpdate:
 				if(onCaseUpdate != null)
-					onCaseNew(package.CaseNew);
+					onCaseUpdate(EmergencyFactory.Get(package.CaseUpdate.IdCase));
 				break;
 			case Protocol.Types.Type.EmergEnd:
 				if(onEmergEnd != null)
-					onEmergEnd(package.EmergEnd);
+					onEmergEnd(EmergencyFactory.Get(package.EmergEnd.IdEmerg));
 				break;
 			case Protocol.Types.Type.EmergNew:
 				if(onEmergNew != null)
-					onEmergNew(package.EmergNew);
+					onEmergNew(EmergencyFactory.Get(package.EmergNew.IdEmerg));
 				break;
 			case Protocol.Types.Type.EmergUpdate:
 				if(onEmergUpdate != null)
-					onEmergUpdate(package.EmergUpdate);
+					onEmergUpdate(EmergencyFactory.Get(package.EmergUpdate.IdEmerg));
 				break;
 			case Protocol.Types.Type.MsgChat:
 				if(onMsgChat != null)
-					onMsgChat(null, package.MsgChat.NewMessage);
+					onMsgChat(UserFactory.Get(package.MsgChat.IdSender), package.MsgChat.NewMessage);
 				break;
 			case Protocol.Types.Type.MsgPrivate:
 				if(onMsgPrivate != null)
-					onMsgPrivate(null, package.MsgPrivate.NewMessage);
+					onMsgPrivate(UserFactory.Get(package.MsgPrivate.IdSender), package.MsgPrivate.NewMessage);
 				break;
 			case Protocol.Types.Type.MsgWall:
 				if(onMsgWall != null)
-					onMsgWall(null, package.MsgWall.NewMessage);
+					onMsgWall(UserFactory.Get(package.MsgWall.IdSender), package.MsgWall.NewMessage);
 				break;
 			case Protocol.Types.Type.Quit:
 				if(onQuit != null)
@@ -145,27 +147,30 @@ namespace network
 				break;*/
 			case Protocol.Types.Type.UserLoginAnswer:
 				if(onUserLoginAnswer != null)
-					onUserLoginAnswer(package.UserLoginAnswer.Servertime != null);
+					onUserLoginAnswer(package.UserLoginAnswer.Servertime != 0);
 				break;
 			case Protocol.Types.Type.VehicleAlarm:
 				if(onVehicleAlarm != null)
-					onVehicleAlarm(CarFactory.Get(package.VehicleAlarm.IdVehicle), null);
+					onVehicleAlarm(CarFactory.Get(package.VehicleAlarm.IdVehicle));
 				break;
 			case Protocol.Types.Type.VehicleMsg:
 				if(onVehicleMsg != null)
-					onVehicleMsg(package.VehicleMsg);
+					onVehicleMsg(CarFactory.Get(package.VehicleMsg.IdVehicle), package.VehicleMsg.NewMessage);
 				break;
 			case Protocol.Types.Type.VehiclePosition:
 				if(onVehiclePosition != null)
-					onVehiclePosition(package.VehiclePosition);
+					onVehiclePosition(
+						CarFactory.Get(package.VehiclePosition.IdVehicle),
+						new models.CarPosition(DateTime.Now,
+							new models.Point(package.VehiclePosition.Latitude, package.VehiclePosition.Longitude)));
 				break;
 			case Protocol.Types.Type.VehicleStorno:
 				if(onVehicleStorno != null)
-					onVehicleStorno(package.VehicleStornno);
+					onVehicleStorno(CarFactory.Get(package.VehicleStornno.IdVehicle));
 				break;
 			case Protocol.Types.Type.VehicleUpdate:
 				if(onVehicleUpdate != null)
-					onVehicleUpdate(package.VehicleUpdate);
+					onVehicleUpdate(CarFactory.Get(package.VehicleUpdate.IdVehicle));
 				break;
 			}
 		}

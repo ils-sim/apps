@@ -43,6 +43,7 @@
     <Compile Include="Emergency.cs" />
     <Compile Include="ControlCenter.cs" />
     <Compile Include="CarPosition.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
