@@ -20,6 +20,8 @@ namespace plugins
 	public interface PluginInterface
 	{
 		string PluginName { get; }
+
+		Gtk.Window PluginWindow { get; }
 	}
 }
 

@@ -1,37 +1,16 @@
-/*********************************************************************************************
-* 
-* ILS-Sim.org Apps
-* Copyright (C) 2016  ils-sim.org Team
-* 
-* This program is free software; you can redistribute it and/or modify it under the terms
-* of the GNU General Public License as published by the Free Software Foundation; either
-* version 3 of the License, or (at your option) any later version.
-* 
-* This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-* without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-* See the GNU General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public License along with this
-* program; if not, see <http://www.gnu.org/licenses/>.
-* 
-*********************************************************************************************/
-using System;
-using System.Collections.Generic;
-using network;
-using models;
+﻿using System;
+using Gtk;
 
 namespace client
 {
 	class MainClass
 	{
-		public static void ReceivePacket(Protocol package)
-		{
-			Console.WriteLine(package.ToString());
-		}
-
 		public static void Main(string[] args)
 		{
-
+			Application.Init();
+			MainWindow win = new MainWindow();
+			win.Show();
+			Application.Run();
 
 			/*TCPClient client = new TCPClient();
 			client.Connect("127.0.0.1", 1244);
@@ -84,11 +63,6 @@ namespace client
 			Car car = CarFactory.Get(2940);
 			CarUpdate update = CarUpdateFactory.Get(car);
 			List<CarPosition> positions = CarPositionFactory.Get(car);*/
-		}
-
-		static void HandleReceivePacketEventHandler(Protocol package)
-		{
-			
 		}
 	}
 }

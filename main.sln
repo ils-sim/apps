@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "models", "models\models.csproj", "{75AE14E4-F10C-40B7-B473-F88B7592C162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{756F8EBF-6E98-45E3-A26C-013D86C0696A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "plugins", "plugins\plugins.csproj", "{7F18FA38-0899-4C93-AE09-B04395FB4301}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "network", "network\network.csproj", "{0E72E075-35EA-46B1-A8E6-0A3BBBD26AC5}"
@@ -12,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json", "Newtonsoft.Json\Newtonsoft.Json.csproj", "{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unittests", "unittests\unittests.csproj", "{30E839AE-1FB3-4D57-A790-08B21D29877F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{1070325B-4597-4757-B43F-83C8D6642FAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{90204DBD-D1C6-4EC2-9053-8D18B77EE157}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogWindow", "LogWindow\LogWindow.csproj", "{B3345025-AE6D-4741-9FB9-F69F2B91B244}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +27,14 @@ Global
 		{0E72E075-35EA-46B1-A8E6-0A3BBBD26AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E72E075-35EA-46B1-A8E6-0A3BBBD26AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E72E075-35EA-46B1-A8E6-0A3BBBD26AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1070325B-4597-4757-B43F-83C8D6642FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1070325B-4597-4757-B43F-83C8D6642FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1070325B-4597-4757-B43F-83C8D6642FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1070325B-4597-4757-B43F-83C8D6642FAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30E839AE-1FB3-4D57-A790-08B21D29877F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30E839AE-1FB3-4D57-A790-08B21D29877F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30E839AE-1FB3-4D57-A790-08B21D29877F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30E839AE-1FB3-4D57-A790-08B21D29877F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{756F8EBF-6E98-45E3-A26C-013D86C0696A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{756F8EBF-6E98-45E3-A26C-013D86C0696A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{756F8EBF-6E98-45E3-A26C-013D86C0696A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{756F8EBF-6E98-45E3-A26C-013D86C0696A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75AE14E4-F10C-40B7-B473-F88B7592C162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75AE14E4-F10C-40B7-B473-F88B7592C162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75AE14E4-F10C-40B7-B473-F88B7592C162}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,6 +47,13 @@ Global
 		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3345025-AE6D-4741-9FB9-F69F2B91B244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3345025-AE6D-4741-9FB9-F69F2B91B244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3345025-AE6D-4741-9FB9-F69F2B91B244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3345025-AE6D-4741-9FB9-F69F2B91B244}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3345025-AE6D-4741-9FB9-F69F2B91B244} = {90204DBD-D1C6-4EC2-9053-8D18B77EE157}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = models\models.csproj

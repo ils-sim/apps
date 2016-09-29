@@ -94,44 +94,44 @@ namespace network
 			case Protocol.Types.Type.CallAccepted:
 				if(onCallAccepted != null)
 					onCallAccepted(
-						EmergencyFactory.Get(package.CallAccepted.IdEmerg),
-						UserFactory.Get(package.CallAccepted.IdReciever));
+						EmergencyFactory.Get(Convert.ToInt32(package.CallAccepted.IdEmerg)),
+						UserFactory.Get(Convert.ToInt32(package.CallAccepted.IdReciever)));
 				break;
 			case Protocol.Types.Type.CaseEnd:
 				if(onCaseEnd != null)
-					onCaseEnd(EmergencyFactory.Get(package.CaseEnd.IdCase));
+					onCaseEnd(EmergencyFactory.Get(Convert.ToInt32(package.CaseEnd.IdCase)));
 				break;
 			case Protocol.Types.Type.CaseNew:
 				if(onCaseNew != null)
-					onCaseNew(EmergencyFactory.Get(package.CaseNew.IdCase));
+					onCaseNew(EmergencyFactory.Get(Convert.ToInt32(package.CaseNew.IdCase)));
 				break;
 			case Protocol.Types.Type.CaseUpdate:
 				if(onCaseUpdate != null)
-					onCaseUpdate(EmergencyFactory.Get(package.CaseUpdate.IdCase));
+					onCaseUpdate(EmergencyFactory.Get(Convert.ToInt32(package.CaseUpdate.IdCase)));
 				break;
 			case Protocol.Types.Type.EmergEnd:
 				if(onEmergEnd != null)
-					onEmergEnd(EmergencyFactory.Get(package.EmergEnd.IdEmerg));
+					onEmergEnd(EmergencyFactory.Get(Convert.ToInt32(package.EmergEnd.IdEmerg)));
 				break;
 			case Protocol.Types.Type.EmergNew:
 				if(onEmergNew != null)
-					onEmergNew(EmergencyFactory.Get(package.EmergNew.IdEmerg));
+					onEmergNew(EmergencyFactory.Get(Convert.ToInt32(package.EmergNew.IdEmerg)));
 				break;
 			case Protocol.Types.Type.EmergUpdate:
 				if(onEmergUpdate != null)
-					onEmergUpdate(EmergencyFactory.Get(package.EmergUpdate.IdEmerg));
+					onEmergUpdate(EmergencyFactory.Get(Convert.ToInt32(package.EmergUpdate.IdEmerg)));
 				break;
 			case Protocol.Types.Type.MsgChat:
 				if(onMsgChat != null)
-					onMsgChat(UserFactory.Get(package.MsgChat.IdSender), package.MsgChat.NewMessage);
+					onMsgChat(UserFactory.Get(Convert.ToInt32(package.MsgChat.IdSender)), package.MsgChat.NewMessage);
 				break;
 			case Protocol.Types.Type.MsgPrivate:
 				if(onMsgPrivate != null)
-					onMsgPrivate(UserFactory.Get(package.MsgPrivate.IdSender), package.MsgPrivate.NewMessage);
+					onMsgPrivate(UserFactory.Get(Convert.ToInt32(package.MsgPrivate.IdSender)), package.MsgPrivate.NewMessage);
 				break;
 			case Protocol.Types.Type.MsgWall:
 				if(onMsgWall != null)
-					onMsgWall(UserFactory.Get(package.MsgWall.IdSender), package.MsgWall.NewMessage);
+					onMsgWall(UserFactory.Get(Convert.ToInt32(package.MsgWall.IdSender)), package.MsgWall.NewMessage);
 				break;
 			case Protocol.Types.Type.Quit:
 				if(onQuit != null)
@@ -151,26 +151,26 @@ namespace network
 				break;
 			case Protocol.Types.Type.VehicleAlarm:
 				if(onVehicleAlarm != null)
-					onVehicleAlarm(CarFactory.Get(package.VehicleAlarm.IdVehicle));
+					onVehicleAlarm(CarFactory.Get(Convert.ToInt32(package.VehicleAlarm.IdVehicle)));
 				break;
 			case Protocol.Types.Type.VehicleMsg:
 				if(onVehicleMsg != null)
-					onVehicleMsg(CarFactory.Get(package.VehicleMsg.IdVehicle), package.VehicleMsg.NewMessage);
+					onVehicleMsg(CarFactory.Get(Convert.ToInt32(package.VehicleMsg.IdVehicle)), package.VehicleMsg.NewMessage);
 				break;
 			case Protocol.Types.Type.VehiclePosition:
 				if(onVehiclePosition != null)
 					onVehiclePosition(
-						CarFactory.Get(package.VehiclePosition.IdVehicle),
+						CarFactory.Get(Convert.ToInt32(package.VehiclePosition.IdVehicle)),
 						new models.CarPosition(DateTime.Now,
 							new models.Point(package.VehiclePosition.Latitude, package.VehiclePosition.Longitude)));
 				break;
 			case Protocol.Types.Type.VehicleStorno:
 				if(onVehicleStorno != null)
-					onVehicleStorno(CarFactory.Get(package.VehicleStornno.IdVehicle));
+					onVehicleStorno(CarFactory.Get(Convert.ToInt32(package.VehicleStornno.IdVehicle)));
 				break;
 			case Protocol.Types.Type.VehicleUpdate:
 				if(onVehicleUpdate != null)
-					onVehicleUpdate(CarFactory.Get(package.VehicleUpdate.IdVehicle));
+					onVehicleUpdate(CarFactory.Get(Convert.ToInt32(package.VehicleUpdate.IdVehicle)));
 				break;
 			}
 		}
