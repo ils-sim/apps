@@ -7,7 +7,14 @@ namespace LogWindow
 	{
 		public string PluginName { get { return "LogWindow"; } }
 
-		public Gtk.Window PluginWindow { get { return new LogWindow(); } }
+		private Gtk.Window mPluginWindow = null;
+		public Gtk.Window PluginWindow {
+			get {
+				if(mPluginWindow == null)
+					mPluginWindow = new LogWindow();
+				return mPluginWindow;
+			}
+		}
 	}
 }
 

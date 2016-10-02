@@ -17,13 +17,14 @@ public partial class MainWindow
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.hbox3 = new global::Gtk.HBox ();
 		this.hbox3.Name = "hbox3";
-		this.hbox3.Spacing = 6;
+		this.hbox3.Spacing = 1;
+		this.hbox3.BorderWidth = ((uint)(1));
 		// Container child hbox3.Gtk.Box+BoxChild
 		this.button3 = new global::Gtk.Button ();
 		this.button3.CanFocus = true;
 		this.button3.Name = "button3";
 		this.button3.UseUnderline = true;
-		this.button3.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+		this.button3.Label = global::Mono.Unix.Catalog.GetString ("Button3");
 		this.hbox3.Add (this.button3);
 		global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.button3]));
 		w1.Position = 0;
@@ -33,8 +34,8 @@ public partial class MainWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 400;
-		this.DefaultHeight = 300;
+		this.DefaultWidth = 401;
+		this.DefaultHeight = 80;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.button3.Clicked += new global::System.EventHandler (this.OnButton3Clicked);

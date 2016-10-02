@@ -8,7 +8,7 @@
     <widget-library name="../../plugins/bin/Debug/plugins.dll" />
     <widget-library name="../bin/Debug/client.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
+  <widget class="Gtk.Window" id="MainWindow" design-size="401 80">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -16,13 +16,14 @@
     <child>
       <widget class="Gtk.HBox" id="hbox3">
         <property name="MemberName" />
-        <property name="Spacing">6</property>
+        <property name="Spacing">1</property>
+        <property name="BorderWidth">1</property>
         <child>
           <widget class="Gtk.Button" id="button3">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">GtkButton</property>
+            <property name="Label" translatable="yes">Button3</property>
             <property name="UseUnderline">True</property>
             <signal name="Clicked" handler="OnButton3Clicked" />
           </widget>
