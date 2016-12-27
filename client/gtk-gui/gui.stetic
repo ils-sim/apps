@@ -8,24 +8,50 @@
     <widget-library name="../../plugins/bin/Debug/plugins.dll" />
     <widget-library name="../bin/Debug/client.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="401 80">
+  <widget class="Gtk.Window" id="MainWindow" design-size="533 116">
+    <action-group name="Default">
+      <action id="FileAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">File</property>
+        <property name="ShortLabel" translatable="yes">File</property>
+      </action>
+      <action id="CloseAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Close</property>
+        <property name="ShortLabel" translatable="yes">Close</property>
+        <signal name="Activated" handler="OnCloseActionActivated" />
+      </action>
+      <action id="PluginsAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Plugins</property>
+        <property name="ShortLabel" translatable="yes">Plugins</property>
+      </action>
+      <action id="ReloadAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Reload</property>
+        <property name="ShortLabel" translatable="yes">Reload</property>
+        <signal name="Activated" handler="OnReloadActionActivated" />
+      </action>
+    </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
-      <widget class="Gtk.HBox" id="hbox3">
+      <widget class="Gtk.VBox" id="vbox3">
         <property name="MemberName" />
-        <property name="Spacing">1</property>
-        <property name="BorderWidth">1</property>
+        <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.Button" id="button3">
+          <widget class="Gtk.MenuBar" id="menubar2">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Button3</property>
-            <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnButton3Clicked" />
+            <node name="__gtksharp_131_Stetic_Editor_ActionMenuBar" type="Menubar">
+              <node type="Menu" action="FileAction">
+                <node type="Menuitem" action="CloseAction" />
+              </node>
+              <node type="Menu" action="PluginsAction">
+                <node type="Menuitem" action="ReloadAction" />
+              </node>
+            </node>
           </widget>
           <packing>
             <property name="Position">0</property>
@@ -35,10 +61,24 @@
           </packing>
         </child>
         <child>
-          <placeholder />
-        </child>
-        <child>
-          <placeholder />
+          <widget class="Gtk.HBox" id="hbox3">
+            <property name="MemberName" />
+            <property name="Spacing">1</property>
+            <property name="BorderWidth">1</property>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">False</property>
+          </packing>
         </child>
       </widget>
     </child>

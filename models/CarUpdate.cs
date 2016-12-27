@@ -57,7 +57,7 @@ namespace models
 
 		public override string ToString()
 		{
-			return string.Format("[CarUpdate: LastUpdate={0}, Status={1}, oalPosition={2}, Emergency={3}, BlueLight={4}, isServerStatus={5}]", LastUpdate, Status, GoalPosition, Emergency, BlueLight, isServerStatus);
+			return string.Format("[CarUpdate: LastUpdate={0}, Status={1}, GoalPosition={2}, Emergency={3}, BlueLight={4}, isServerStatus={5}]", LastUpdate, Status, GoalPosition, Emergency, BlueLight, isServerStatus);
 		}
 	}
 }

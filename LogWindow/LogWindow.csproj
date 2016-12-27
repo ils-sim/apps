@@ -55,5 +55,9 @@
       <Project>{7F18FA38-0899-4C93-AE09-B04395FB4301}</Project>
       <Name>plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="..\models\models.csproj">
+      <Project>{75AE14E4-F10C-40B7-B473-F88B7592C162}</Project>
+      <Name>models</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

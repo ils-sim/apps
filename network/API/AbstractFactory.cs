@@ -30,12 +30,13 @@ namespace network
 		}
 
 		public static string Protocol = "http";
-		public static string Server = "localhost";
-		//public static string Server = "api.ils-sim.org";
+		//public static string Server = "localhost";
+		public static string Server = "api.ils-sim.org";
 
 		public static List<T> load(string url)
 		{
 			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(Protocol + "://" + Server + "/" + url);
+			Console.WriteLine("API request: " + request.Address.ToString());
 
 			request.Method = "GET";
 			request.Accept = "application/json";

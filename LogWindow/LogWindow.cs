@@ -9,6 +9,13 @@ namespace LogWindow
 		{
 			this.Build();
 		}
+
+		public void AddText(string text)
+		{
+			Gtk.TextIter iter = textview1.Buffer.EndIter;
+			text += "\n";
+			textview1.Buffer.Insert(ref iter, text);
+		}
 	}
 }
 

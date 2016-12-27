@@ -15,6 +15,10 @@
 * program; if not, see <http://www.gnu.org/licenses/>.
 * 
 *********************************************************************************************/
+
+using System;
+using System.Collections.Generic;
+
 namespace plugins
 {
 	public interface PluginInterface
@@ -22,6 +26,26 @@ namespace plugins
 		string PluginName { get; }
 
 		Gtk.Window PluginWindow { get; }
+
+		void CallAcceptedEventHandler(models.Emergency emerg, models.User user);
+		void CaseEndEventHandler(models.Emergency emerg);
+		void CaseNewEventHandler(models.Emergency emerg);
+		void CaseUpdateEventHandler(models.Emergency emerg);
+		void EmergEndEventHandler(models.Emergency emerg);
+		void EmergNewEventHandler(models.Emergency emerg);
+		void EmergUpdateEventHandler(models.Emergency emerg);
+		void MsgChatEventHandler(models.User sender, String message);
+		void MsgPrivateEventHandler(models.User sender, String message);
+		void MsgWallEventHandler(models.User sender, String message);
+		void QuitEventHandler();
+		void ServerWallEventHandler(String message);
+		void UserListAnswerEventHandler(List<models.User> users);
+		void UserLoginAnswerEventHandler(Int32 servertime);
+		void VehicleAlarmEventHandler(models.Car car);
+		void VehicleMsgEventHandler(models.Car car, String message);
+		void VehiclePositionEventHandler(models.Car car, models.CarPosition position);
+		void VehicleStornoEventHandler(models.Car car);
+		void VehicleUpdateEventHandler(models.Car car);
 	}
 }
 

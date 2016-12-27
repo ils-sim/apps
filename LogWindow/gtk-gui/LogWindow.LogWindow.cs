@@ -6,9 +6,9 @@ namespace LogWindow
 	{
 		private global::Gtk.HBox hbox4;
 		
-		private global::Gtk.Button button6;
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		
-		private global::Gtk.Label label3;
+		private global::Gtk.TextView textview1;
 
 		protected virtual void Build ()
 		{
@@ -22,25 +22,18 @@ namespace LogWindow
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.button6 = new global::Gtk.Button ();
-			this.button6.CanFocus = true;
-			this.button6.Name = "button6";
-			this.button6.UseUnderline = true;
-			this.button6.Label = global::Mono.Unix.Catalog.GetString ("Hihi");
-			this.hbox4.Add (this.button6);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.button6]));
-			w1.Position = 0;
-			w1.Expand = false;
-			w1.Fill = false;
-			// Container child hbox4.Gtk.Box+BoxChild
-			this.label3 = new global::Gtk.Label ();
-			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("labelprop");
-			this.hbox4.Add (this.label3);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label3]));
-			w2.Position = 1;
-			w2.Expand = false;
-			w2.Fill = false;
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.textview1 = new global::Gtk.TextView ();
+			this.textview1.CanFocus = true;
+			this.textview1.Name = "textview1";
+			this.textview1.Editable = false;
+			this.GtkScrolledWindow.Add (this.textview1);
+			this.hbox4.Add (this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.GtkScrolledWindow]));
+			w2.Position = 0;
 			this.Add (this.hbox4);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

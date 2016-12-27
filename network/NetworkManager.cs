@@ -22,9 +22,10 @@ namespace network
 {
 	public class NetworkManager
 	{
+		public TCPClient client;
 		public NetworkManager(String host, Int32 port)
 		{
-			TCPClient client = new TCPClient();
+			client = new TCPClient();
 			client.Connect(host, port);
 			client.onPackageReceive += new TCPClient.ReceivePacketEventHandler(PackageReceive);
 		}
@@ -68,7 +69,7 @@ namespace network
 		public delegate void UserListAnswerEventHandler(List<models.User> users);
 		public event UserListAnswerEventHandler onUserListAnswer;
 
-		public delegate void UserLoginAnswerEventHandler(bool loginwasok);
+		public delegate void UserLoginAnswerEventHandler(Int32 servertime);
 		public event UserLoginAnswerEventHandler onUserLoginAnswer;
 
 		public delegate void VehicleAlarmEventHandler(models.Car car);
@@ -147,11 +148,15 @@ namespace network
 				break;*/
 			case Protocol.Types.Type.UserLoginAnswer:
 				if(onUserLoginAnswer != null)
-					onUserLoginAnswer(package.UserLoginAnswer.Servertime != 0);
+					onUserLoginAnswer(Convert.ToInt32(package.UserLoginAnswer.Servertime));
 				break;
 			case Protocol.Types.Type.VehicleAlarm:
 				if(onVehicleAlarm != null)
-					onVehicleAlarm(CarFactory.Get(Convert.ToInt32(package.VehicleAlarm.IdVehicle)));
+				{
+					models.Car car = CarFactory.Get(Convert.ToInt32(package.VehicleAlarm.IdVehicle));
+					car.LastUpdate = CarUpdateFactory.Get(car);
+					onVehicleAlarm(car);
+				}
 				break;
 			case Protocol.Types.Type.VehicleMsg:
 				if(onVehicleMsg != null)
@@ -159,18 +164,30 @@ namespace network
 				break;
 			case Protocol.Types.Type.VehiclePosition:
 				if(onVehiclePosition != null)
+				{
+					models.Car car = CarFactory.Get(Convert.ToInt32(package.VehiclePosition.IdVehicle));
+					car.LastUpdate = CarUpdateFactory.Get(car);
 					onVehiclePosition(
-						CarFactory.Get(Convert.ToInt32(package.VehiclePosition.IdVehicle)),
+						car,
 						new models.CarPosition(DateTime.Now,
 							new models.Point(package.VehiclePosition.Latitude, package.VehiclePosition.Longitude)));
+				}
 				break;
 			case Protocol.Types.Type.VehicleStorno:
 				if(onVehicleStorno != null)
-					onVehicleStorno(CarFactory.Get(Convert.ToInt32(package.VehicleStornno.IdVehicle)));
+				{
+					models.Car car = CarFactory.Get(Convert.ToInt32(package.VehicleStornno.IdVehicle));
+					car.LastUpdate = CarUpdateFactory.Get(car);
+					onVehicleStorno(car);
+				}
 				break;
 			case Protocol.Types.Type.VehicleUpdate:
 				if(onVehicleUpdate != null)
-					onVehicleUpdate(CarFactory.Get(Convert.ToInt32(package.VehicleUpdate.IdVehicle)));
+				{
+					models.Car car = CarFactory.Get(Convert.ToInt32(package.VehicleUpdate.IdVehicle));
+					car.LastUpdate = CarUpdateFactory.Get(car);
+					onVehicleUpdate(car);
+				}
 				break;
 			}
 		}

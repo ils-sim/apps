@@ -50,6 +50,9 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="Google.Protobuf">
+      <HintPath>..\packages\Google.Protobuf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -73,6 +76,10 @@
     <ProjectReference Include="..\plugins\plugins.csproj">
       <Project>{7F18FA38-0899-4C93-AE09-B04395FB4301}</Project>
       <Name>plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\network\network.csproj">
+      <Project>{0E72E075-35EA-46B1-A8E6-0A3BBBD26AC5}</Project>
+      <Name>network</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

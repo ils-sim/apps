@@ -30,7 +30,7 @@ namespace network
 		{
 			if(_allEmergencies == null)
 			{
-				_allEmergencies = load("Emergencies");
+				_allEmergencies = load("emergency");
 			}
 			return _allEmergencies;
 		}
